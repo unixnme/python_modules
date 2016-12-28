@@ -57,6 +57,8 @@ def popmin(heap, idx_map=None):
     swap(heap, 0, pos, idx_map)
     data = heap[pos]
     del heap[pos]
+    if idx_map != None:
+        del idx_map[data[2]]
     down_heapify(heap, 0, idx_map)
     return data
 
@@ -123,5 +125,5 @@ def test3():
         val = random.randint(0, 100)
         insert(heap, val, str(val), idx_map, val%10)
     while len(heap) > 0:
-        print popmin(heap)
+        print popmin(heap, idx_map)
 
